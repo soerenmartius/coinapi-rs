@@ -1,14 +1,5 @@
 use chrono::{NaiveDate, DateTime, Utc};
 
-// TODO: implement symbol id pattern as described here: https://docs.coinapi.io/#list-all-symbols
-//const SPOT_TYPE: &'static str = "SPOT";
-//const FUTURES_TYPE: &'static str = "FUTURES";
-//const OPTION_TYPE: &'static str = "OPTION";
-
-//enum SymbolType {
-//
-//}
-
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum Exchanges {
