@@ -1,0 +1,15 @@
+[package]
+name = "coinapi-rs"
+version = "0.1.0"
+authors = ["Soren Martius <soeren.martius@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+failure = "0.1.5"
+hex = "0.3.2"
+reqwest = "0.9"
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+tungstenite = "0.6.1"
+chrono = { version = "0.4", features = ["serde"]}
