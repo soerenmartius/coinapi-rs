@@ -2,6 +2,7 @@ use reqwest;
 use reqwest::{Response, StatusCode};
 use reqwest::header::{HeaderMap, HeaderName, HeaderValue, ACCEPT, ACCEPT_ENCODING};
 use std::io::Read;
+use std::collections::BTreeMap;
 
 static API_HOST: &'static str = "https://rest.coinapi.io";
 
@@ -24,6 +25,8 @@ impl Client {
             url.push_str(format!("?{}", parameter).as_str());
         }
 
+        println!("{}", url);
+
         let client = reqwest::Client::new();
 
         let response = client
@@ -32,6 +35,18 @@ impl Client {
             .send().unwrap();
 
         self.handle_response(response)
+    }
+
+    // build request parameters
+    pub fn build_request(&self, parameters: &BTreeMap<String, String>) -> String {
+        let mut request = String::new();
+        for (key, value) in parameters {
+            let param = format!("{}={}&", key, value);
+            request.push_str(param.as_ref());
+        }
+        request.pop(); // remove last &
+
+        request
     }
 
     // set headers

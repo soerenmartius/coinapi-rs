@@ -7,6 +7,7 @@ unused_import_braces)]
 
 mod client;
 mod model;
+pub mod exchangerate;
 pub mod metadata;
 pub mod api;
 
