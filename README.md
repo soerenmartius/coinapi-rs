@@ -11,7 +11,9 @@ Welcome to the unofficial CoinAPI Rust SDK. This repository contain SDK for our 
 ## To-Do
 
 ### General
-- [ ] Error handling with [Failure](https://crates.io/crates/failure)
+- [x] Error handling with [Failure](https://crates.io/crates/failure)
+- [ ] Implement [Log](https://crates.io/crates/log)
+- [ ] [Lazy](https://crates.io/crates/lazy_static) load collections
 - [ ] Implement tests
 
 ### API Implementation Status
@@ -23,9 +25,9 @@ Welcome to the unofficial CoinAPI Rust SDK. This repository contain SDK for our 
     - [x] List all exchanges
     - [x] List all assets
     - [x] List all symbols
-  - [ ] Exchanges rates
-    - [ ] Get specific rate
-    - [ ] Get all current rates
+  - [x] Exchanges rates
+    - [x] Get specific rate
+    - [x] Get all current rates
   - [ ] OHLCV
     - [ ] List all periods
     - [ ] Latest data

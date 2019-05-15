@@ -15,8 +15,8 @@ impl MetaData {
     // list all exchanges
     // https://docs.coinapi.io/#list-all-exchanges
     pub fn get_all_exchanges(&self) -> Result<Exchanges, Error> {
-        let data = self.client.get("/v1/exchanges", "")?;
-        let exchanges: Exchanges = from_str(data.as_str())?;
+        let response = self.client.get("/v1/exchanges", "")?;
+        let exchanges: Exchanges = from_str(response.as_str())?;
 
         Ok(exchanges)
     }
@@ -24,8 +24,8 @@ impl MetaData {
     // list all assets
     // https://docs.coinapi.io/#list-all-assets
     pub fn get_all_assets(&self) -> Result<Assets, Error> {
-        let data = self.client.get("/v1/assets", "")?;
-        let assets: Assets = from_str(data.as_str())?;
+        let response = self.client.get("/v1/assets", "")?;
+        let assets: Assets = from_str(response.as_str())?;
 
         Ok(assets)
     }
@@ -33,7 +33,6 @@ impl MetaData {
     // List all symbols
     // https://docs.coinapi.io/#list-all-symbols
     pub fn get_all_symbols(&self, symbol_filter: Option<&str>) -> Result<Symbols, Error> {
-
         let mut parameters: BTreeMap<String, String> = BTreeMap::new();
 
         if let Some(filter) = symbol_filter {
@@ -42,11 +41,9 @@ impl MetaData {
 
         let request = self.client.build_request(&parameters);
 
-        let data = self.client.get("/v1/symbols", &request)?;
-        let symbols: Symbols = from_str(data.as_str())?;
+        let response = self.client.get("/v1/symbols", &request)?;
+        let symbols: Symbols = from_str(response.as_str())?;
 
         Ok(symbols)
     }
-
-
 }
