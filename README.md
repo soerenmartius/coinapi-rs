@@ -62,3 +62,98 @@ Welcome to the unofficial CoinAPI Rust SDK. This repository contain SDK for our 
     - [ ] Trades (X)
     - [ ] Orderbooks (W)
     - [ ] Heartbeat (0)
+
+
+## Usage
+
+Add this to your Cargo.toml
+
+```toml
+[dependencies]
+coinapi = { git = "https://github.com/soerenmartius/coinapi-rs.git" }
+```
+
+### Metadata 
+
+#### List all exchanges
+
+```rust
+use coinapi_rs::metadata::*;
+
+fn main() {
+    let metadata: MetaData = Coinapi::new(String::from("YOUR_API_KEY_HERE"));
+    let data = metadata.get_all_exchanges();
+
+    match data {
+        Ok(r) => println!("{:#?}", r),
+        Err(e) => println!("Error: {:?}", e)
+    }
+}
+```
+
+#### List all assets
+
+```rust
+use coinapi_rs::metadata::*;
+
+fn main() {
+    let metadata: MetaData = Coinapi::new(String::from("YOUR_API_KEY_HERE"));
+    let assets = metadata.get_all_assets();
+
+    match assets {
+        Ok(r) => println!("{:#?}", r),
+        Err(e) => println!("Error: {:?}", e)
+    }
+}
+```
+
+#### List all symbols
+```rust
+use coinapi_rs::metadata::*;
+
+fn main() {
+    let metadata: MetaData = Coinapi::new(String::from("YOUR_API_KEY_HERE"));
+    let data = metadata.get_all_symbols(None);
+    //let data = metadata.get_all_symbols(Some("BITSTAMP_SPOT_BTC_USD,HITBTC_SPOT_BTS_BTC")); // with filter
+
+    match data {
+        Ok(r) => println!("{:#?}", r),
+        Err(e) => println!("Error: {:?}", e)
+    }
+}
+```
+
+### Exchange rates
+
+#### Get specific rate
+```rust
+use coinapi_rs::exchangerate::*;
+use chrono::Utc;
+
+fn main() {
+    let exchangerate: ExchangeRate = Coinapi::new(String::from("YOUR_API_KEY_HERE"));
+    let time = Utc.ymd(2018, 7, 8).and_hms(9, 10, 11);
+    let data = exchangerate.get_specific_rate("BTC", "USDT", Some(time));
+
+    match data {
+        Ok(r) => println!("{:#?}", r),
+        Err(e) => println!("Error: {:?}", e)
+    }
+}
+
+```
+
+#### Get all current rates
+```rust
+use coinapi_rs::exchangerate::*;
+
+fn main() {
+    let exchangerate: ExchangeRate = Coinapi::new(String::from("YOUR_API_KEY_HERE"));
+    let data = exchangerate.get_all_rates("BTC");
+
+        match data {
+        Ok(r) => println!("{:#?}", r),
+        Err(e) => println!("Error: {:?}", e)
+    }
+}
+```
