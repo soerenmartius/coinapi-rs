@@ -28,10 +28,10 @@ Welcome to the unofficial CoinAPI Rust SDK. This repository contain SDK for our 
   - [x] Exchanges rates
     - [x] Get specific rate
     - [x] Get all current rates
-  - [ ] OHLCV
-    - [ ] List all periods
-    - [ ] Latest data
-    - [ ] Historical Data
+  - [x] OHLCV
+    - [x] List all periods
+    - [x] Latest data
+    - [x] Historical Data
   - [ ] Trades
     - [ ] Current data
     - [ ] Latest data
@@ -157,3 +157,56 @@ fn main() {
     }
 }
 ```
+
+### OHLCV
+
+#### List all periods
+```rust
+use coinapi_rs::ohlcv::*;
+
+fn main() {
+    let ohlcv: OHLCV = Coinapi::new(String::from
+    ("YOUR_API_KEY_HERE"));
+    let data = ohlcv.list_all_periods();
+
+    match data {
+      Ok(r)  => println!("{:#?}", r),
+      Err(e) => println!("Error: {:?}", e)
+    }
+}
+```
+
+#### Latest data
+```rust
+use coinapi_rs::ohlcv::*;
+use chrono::Utc;
+
+fn main() {
+    let ohlcv: OHLCV = Coinapi::new(String::from
+    ("YOUR_API_KEY_HERE"));
+    let data = ohlcv.latest_data("BITSTAMP_SPOT_BTC_USD", "1MIN", Some(false), Some(100i32));
+
+    match data {
+      Ok(r)  => println!("{:#?}", r),
+      Err(e) => println!("Error: {:?}", e)
+    }
+}
+```
+
+### Historical data
+```rust
+use coinapi_rs::ohlcv::*;
+use chrono::Utc;
+
+fn main() {
+    let ohlcv: OHLCV = Coinapi::new(String::from
+    ("YOUR_API_KEY_HERE"));
+    let start_time = Utc.ymd(2020, 8, 20).and_hms(5, 55, 55);
+    let end_time = Utc.ymd(2020, 8, 27).and_hms(5, 55, 55);
+    let data = ohlcv.historical_data("BITSTAMP_SPOT_BTC_USD", "1MIN", start_time, Some(time_end), None, Some(100i32));
+
+    match data {
+      Ok(r)  => println!("{:#?}", r),
+      Err(e) => println!("Error: {:?}", e)
+    }
+}
