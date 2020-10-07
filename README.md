@@ -1,4 +1,5 @@
 # coinapi-rs
+
 Unofficial CoinAPI Rust SDK for the [Coinapi.io](https://docs.coinapi.io/)
 
 [![Build Status](https://travis-ci.org/soerenmartius/coinapi-rs.png?branch=master)](https://travis-ci.org/soerenmartius/coinapi-rs)
@@ -6,17 +7,17 @@ Unofficial CoinAPI Rust SDK for the [Coinapi.io](https://docs.coinapi.io/)
 
 Welcome to the unofficial CoinAPI Rust SDK. This repository contain SDK for our CoinAPI's documented at https://docs.coinapi.io/
 
-
-
 ## To-Do
 
 ### General
+
 - [x] Error handling with [Failure](https://crates.io/crates/failure)
 - [ ] Implement [Log](https://crates.io/crates/log)
 - [ ] [Lazy](https://crates.io/crates/lazy_static) load collections
 - [ ] Implement tests
 
 ### API Implementation Status
+
 - [ ] REST API
   - [x] General
     - [x] Authorization
@@ -49,20 +50,19 @@ Welcome to the unofficial CoinAPI Rust SDK. This repository contain SDK for our 
   - [ ] General
     - [ ] Hello
   - [ ] Messages
-      - [ ] Trades
-      - [ ] Quotes
-      - [ ] Book
-      - [ ] Book5
-      - [ ] Book20
-      - [ ] Book50
-      - [ ] Heartbeat
+    - [ ] Trades
+    - [ ] Quotes
+    - [ ] Book
+    - [ ] Book5
+    - [ ] Book20
+    - [ ] Book50
+    - [ ] Heartbeat
 - [ ] FIX API
-    - [ ] Logon (A)
-    - [ ] Logout (5)
-    - [ ] Trades (X)
-    - [ ] Orderbooks (W)
-    - [ ] Heartbeat (0)
-
+  - [ ] Login (A)
+  - [ ] Logout (5)
+  - [ ] Trades (X)
+  - [ ] Orderbooks (W)
+  - [ ] Heartbeat (0)
 
 ## Usage
 
@@ -73,7 +73,7 @@ Add this to your Cargo.toml
 coinapi = { git = "https://github.com/soerenmartius/coinapi-rs.git" }
 ```
 
-### Metadata 
+### Metadata
 
 #### List all exchanges
 
@@ -108,6 +108,7 @@ fn main() {
 ```
 
 #### List all symbols
+
 ```rust
 use coinapi_rs::metadata::*;
 
@@ -126,6 +127,7 @@ fn main() {
 ### Exchange rates
 
 #### Get specific rate
+
 ```rust
 use coinapi_rs::exchangerate::*;
 use chrono::Utc;
@@ -144,6 +146,7 @@ fn main() {
 ```
 
 #### Get all current rates
+
 ```rust
 use coinapi_rs::exchangerate::*;
 
@@ -210,3 +213,8 @@ fn main() {
       Err(e) => println!("Error: {:?}", e)
     }
 }
+
+## Contributors
+
+- [Blake Willoughby](https://github.com/byblakeorriver)
+- [Soren Martius](https://github.com/soerenmartius)
