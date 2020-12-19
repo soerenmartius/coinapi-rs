@@ -2,12 +2,12 @@ use chrono::{DateTime, Utc};
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
-enum Periods {
+pub enum Periods {
     AllPeriods(Vec<Period>)
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct Period {
+pub struct Period {
     period_id: String,
     length_seconds: u32,
     length_months: u8,
@@ -17,12 +17,12 @@ struct Period {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-enum OHCLVs {
-    AllOHCLs(Vec<OHCLV>)
+pub enum OHLCVs {
+    AllOHLCs(Vec<OHLCV>)
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct OHCLV {
+pub struct OHLCV {
     time_period_start: DateTime<Utc>,
     time_period_end: DateTime<Utc>,
     time_open: DateTime<Utc>,

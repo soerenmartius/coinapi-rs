@@ -9,6 +9,7 @@ mod client;
 mod model;
 pub mod exchangerate;
 pub mod metadata;
+pub mod ohlcv;
 pub mod api;
 
 #[macro_use]
